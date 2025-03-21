@@ -15,7 +15,6 @@ image="$ecrrepo:latest"
 
 echo "dirname/readlink: $( dirname -- "$( readlink -f -- "$0"; )"; )"
 
-
 echo "${tempdir}"
 mkdir $tempdir
 cd $tempdir

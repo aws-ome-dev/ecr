@@ -5,13 +5,16 @@
 2. script to push to ECR `./deploy`
    - The script is independent of the source code. copy `./deploy` to a new directory to execute deployment.
 
-# Deployment Requirements
+# Deployment
+
+## Requirements
 
 - github repository
 - go 1.23
 - docker cli
 - ECR Repository and Credentials for storing images
 
+### Steps
 
 # ECR
 
