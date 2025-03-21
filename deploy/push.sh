@@ -23,7 +23,7 @@ git clone https://github.com/aws-ome-dev/ecr.git
 git checkout main
 cd ./ecr
 
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 692859948557.dkr.ecr.us-east-1.amazonaws.com
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ecrrepo
 
 docker build -t $image  -f ./deploy/Dockerfile .
 docker push $image
