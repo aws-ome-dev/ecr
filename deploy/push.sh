@@ -11,7 +11,7 @@ while getopts f:t:c: flag; do
     esac
 done
 
-image="$ecrrepo/latest"
+image="$ecrrepo:latest"
 
 echo "dirname/readlink: $( dirname -- "$( readlink -f -- "$0"; )"; )"
 
