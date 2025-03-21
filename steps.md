@@ -6,6 +6,7 @@
 # 1. `deploy/push.sh`
 ## flags
 
+- `--branch=<branch_to_checkout>` \
 - `--ecr-url=<ecr_repo_url>` \
 - `--tag=<image_tag>`
 

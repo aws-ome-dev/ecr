@@ -4,6 +4,7 @@
 tempdir="$( dirname -- "$( readlink -f -- "$0"; )"; )/temp"
 ecrrepo=""
 tag=""
+branch=""
 # overwrites
 for arg in "$@"; do
     case $arg in
@@ -13,6 +14,9 @@ for arg in "$@"; do
         --tag=*)
             tag="${arg#*=}"  # Extract value after '='
             ;;
+        --branch=*)
+            branch="${arg#*=}"  # Extract value after '='
+            ;;
         *)
             echo "Unknown argument: $arg"
             exit 1
@@ -20,8 +24,14 @@ for arg in "$@"; do
     esac
 done
 
-if [ -z "tag" ]; then
+if [ -z "$tag" ]; then
     echo "Error: tag is empty!"
+    exit 1
+fi
+
+
+if [ -z "$branch" ]; then
+    echo "Error: branch is empty!"
     exit 1
 fi
 
@@ -36,7 +46,7 @@ echo "${tempdir}"
 mkdir $tempdir
 cd $tempdir
 git clone https://github.com/aws-ome-dev/ecr.git
-git checkout main
+git checkout $branch
 cd ./ecr
 
 aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $ecrrepo
