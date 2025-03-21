@@ -4,7 +4,7 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 RUN ls
-COPY *.go ./
+COPY ./*.go ./
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o /main
 
