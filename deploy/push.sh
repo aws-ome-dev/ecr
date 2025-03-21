@@ -2,16 +2,33 @@
 
 # defaults
 tempdir="$( dirname -- "$( readlink -f -- "$0"; )"; )/temp"
-ecrrepo="692859948557.dkr.ecr.us-east-1.amazonaws.com/awesomedev"
-
+ecrrepo=""
+tag=""
 # overwrites
-while getopts f:t:c: flag; do
-    case "${flag}" in
-        e) ecrrepo=${OPTARG} ;;
+for arg in "$@"; do
+    case $arg in
+        --ecr-url=*)
+            ecrrepo="${arg#*=}"  # Extract value after '='
+            ;;
+        --tag=*)
+            tag="${arg#*=}"  # Extract value after '='
+            ;;
+        *)
+            echo "Unknown argument: $arg"
+            exit 1
+            ;;
     esac
 done
 
-image="$ecrrepo:latest"
+if [ -z "tag" ]; then
+    echo "Error: tag is empty!"
+    exit 1
+fi
+
+
+image="$ecrrepo:$tag"
+
+echo "image target repo $image"
 
 echo "dirname/readlink: $( dirname -- "$( readlink -f -- "$0"; )"; )"
 
@@ -28,4 +45,4 @@ docker build -t $image  -f ./deploy/Dockerfile .
 docker push $image
 rm -rf $tempdir
 
-echo "image url: $image"
+echo "pushed to ecr. image url: $image"
