@@ -6,7 +6,9 @@
 # 1. `deploy/push.sh`
 ## flags
 
-`--ecr-url` 
+- `--ecr-url=<ecr_repo_url>` \
+- `--tag=<image_tag>`
+
 After running `deploy/push.sh` successfully, an image should be pushed to ECR. 
 
 The output's final line will be something like: \
