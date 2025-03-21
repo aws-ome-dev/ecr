@@ -28,3 +28,4 @@ docker build -t $image  -f ./deploy/Dockerfile .
 docker push $image
 rm -rf $tempdir
 
+echo "image url: $image"
