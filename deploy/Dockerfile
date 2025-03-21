@@ -6,6 +6,6 @@ RUN go mod download
 
 COPY ./src ./src
 
-RUN CGO_ENABLED=0 GOOS=linux go build ./src -o ./main
+RUN CGO_ENABLED=0 GOOS=linux go build ./src -o main
 
-CMD ["./main"]
+CMD ["main"]
