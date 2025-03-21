@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math/rand/v2"
 	"net/http"
 	"os"
@@ -14,5 +15,6 @@ func main() {
 		w.Write([]byte(fmt.Sprintf("Server Random: %d, FOO=%s", serverRandom, foo)))
 		w.WriteHeader(http.StatusOK)
 	})
+	log.Println("serving https server...")
 	http.ListenAndServe(":80", nil)
 }
