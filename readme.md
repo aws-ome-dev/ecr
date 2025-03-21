@@ -7,9 +7,10 @@
 
 # Deployment Requirements
 
+- github repository
 - go 1.23
 - docker cli
-- ECR Repository and Credentials
+- ECR Repository and Credentials for storing images
 
 
 # ECR
