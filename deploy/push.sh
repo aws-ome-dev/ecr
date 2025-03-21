@@ -13,7 +13,7 @@ git clone https://github.com/aws-ome-dev/ecr.git
 ls
 cd ./ecr
 ls ./deploy
-docker buildx build -f ./deploy/Dockerfile .
+docker build -f ./deploy/Dockerfile .
 
 
 rm -rf $tempdir
