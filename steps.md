@@ -11,3 +11,5 @@ The output's final line will be something like: \
 2. Create a container and expose port to run the server:
 
 `docker run -p 80:80 692859948557.dkr.ecr.us-east-1.amazonaws.com/awesomedev:latest`
+
+for local dev, try `curl localhost:80`
